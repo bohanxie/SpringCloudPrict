@@ -13,6 +13,14 @@ spring:
     username: root
     password: 123456
 
+eureka:
+  client:
+    register-with-eureka: true
+    #是否从Eureka抓取自己的注册信息，单点无所谓。集群必须为true才能配合使用ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entities
