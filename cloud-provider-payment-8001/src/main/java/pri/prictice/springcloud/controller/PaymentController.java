@@ -2,6 +2,7 @@ package pri.prictice.springcloud.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import pri.prictice.springcloud.entities.CommonResult;
 import pri.prictice.springcloud.entities.Payment;
@@ -21,14 +22,17 @@ public class PaymentController {
     @Autowired
     private PaymenService paymenService;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymenService.create(payment);
         log.info("插入结果:" + result);
         if (result > 0) {
-            return new CommonResult(200, "插入成功", result);
+            return new CommonResult(200, "插入成功，serverPort：" + serverPort, result);
         }else {
-            return new CommonResult(500, "插入失败", null);
+            return new CommonResult(500, "插入失败，serverPort：" + serverPort, null);
         }
     }
 
@@ -37,9 +41,9 @@ public class PaymentController {
         Payment result = paymenService.getPaymentById(id);
         log.info("查询结果:" + result);
         if (result != null) {
-            return new CommonResult(200, "查询成功", result);
+            return new CommonResult(200, "查询成功，serverPort：" + serverPort, result);
         }else {
-            return new CommonResult(500, "查询失败", null);
+            return new CommonResult(500, "查询失败，serverPort：" + serverPort, null);
         }
     }
 }
