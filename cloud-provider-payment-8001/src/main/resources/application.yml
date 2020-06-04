@@ -23,6 +23,8 @@ eureka:
   instance:
     instance-id: payment8001
     prefer-ip-address: true #访问路径可以显示ip地址
+    lease-renewal-interval-in-seconds: 1 #发送心跳时间间隔
+    lease-expiration-duration-in-seconds: 2 #eureka服务端在收到最后一次心跳后等待时间上限，超过删除服务
 
 mybatis:
   mapper-locations: classpath*:mapper/*.xml

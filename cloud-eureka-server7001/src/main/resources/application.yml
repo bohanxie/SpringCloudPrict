@@ -4,7 +4,6 @@ server:
 eureka:
   instance:
     hostname: eureka7001.com #服务端的实例名称
-
   client:
     #false表示不向注册中心注册自己
     register-with-eureka: false
@@ -12,3 +11,7 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://eureka7002.com:7002/eureka/
+  server:
+    #关闭自我保护
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000 #eureka server清理无效节点的时间间隔
