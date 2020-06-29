@@ -21,3 +21,6 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka
 
 
+feign:
+  hystrix:
+    enabled: true
