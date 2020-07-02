@@ -1,5 +1,7 @@
 package pri.practice.springcloud.service;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 /**
  * @author xbh
  * @version 1.0.0
@@ -22,4 +24,6 @@ public interface PaymentService {
      * @return
      */
     public String paymentTimeout(Integer id);
+
+    public String paymentCircutiBreaker(@PathVariable("id") Integer id);
 }
