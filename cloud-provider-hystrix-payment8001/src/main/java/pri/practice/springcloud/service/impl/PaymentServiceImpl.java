@@ -48,7 +48,7 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     //熔断
-
+    @Override
     @HystrixCommand(fallbackMethod = "paymentCircutiBreaker_fallBack",
     commandProperties = {
             @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),//是否开启
